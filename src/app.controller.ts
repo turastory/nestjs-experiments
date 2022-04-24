@@ -6,9 +6,14 @@ import { AppService } from './app.service';
 export class AppController {
   constructor(private readonly appService: AppService) {}
 
-  @Get()
-  getHello(): string {
-    return this.appService.getHello();
+  @Get('/sum')
+  sendMessage() {
+    return this.appService.sendMessage({ op: 'sum' }, [1, 2, 3]);
+  }
+
+  @Get('/user')
+  sendEvent() {
+    return this.appService.sendEvent('user_signed', '1');
   }
 
   @MessagePattern({ op: 'sum' })
