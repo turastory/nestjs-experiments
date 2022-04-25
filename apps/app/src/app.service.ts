@@ -6,11 +6,10 @@ import { Observable } from 'rxjs';
 export class AppService {
   constructor(@Inject('TEST_SERVICE') private readonly client: ClientProxy) {}
 
-  sendMessage(pattern: PatternMetadata, data: number[]): Observable<number> {
-    return this.client.send(pattern, data);
-  }
-
-  sendEvent(pattern: PatternMetadata, data: string) {
-    this.client.emit(pattern, data);
+  requestRefreshHistory(
+    pattern: PatternMetadata,
+    userId: string,
+  ): Observable<number> {
+    return this.client.send(pattern, userId);
   }
 }

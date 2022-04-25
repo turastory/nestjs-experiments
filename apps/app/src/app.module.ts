@@ -9,6 +9,7 @@ import { AppService } from './app.service';
       {
         name: 'TEST_SERVICE',
         transport: Transport.TCP,
+        options: { port: 3040 },
       },
     ]),
   ],
